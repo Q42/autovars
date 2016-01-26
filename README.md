@@ -52,7 +52,7 @@ results of which can be accessed through `.autovars`.
 ## Show me an example!
 An AutoVars version of the simple-todos example:
 
-```
+```javascript
 // App component - represents the whole app
 App = React.createClass({
   mixins: [AutoVarMixin],
