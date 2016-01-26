@@ -50,4 +50,58 @@ of the React component lifecycle with automatically executing functions, the
 results of which can be accessed through `.autovars`.
 
 ## Show me an example!
-See the examples directory for some examples.
+An AutoVars version of the simple-todos example:
+
+```
+// App component - represents the whole app
+App = React.createClass({
+  mixins: [AutoVarMixin],
+
+  // Here goes all logic previously in getMeteorData and getInitialState
+  constructAutoVars() {
+    // These cursors never change, so create them once (constructAutoVars is
+    // called once in the React component lifecycle).
+    const sortBy = { sort: { createdAt: -1 } };
+    const allCursor = Tasks.find({}, sortBy);
+    const incompleteCursor = Tasks.find({ checked: { $ne: true } }, sortBy);
+
+    return {
+      // Creates this.autovars.hideCompleted that can be set in code below
+      hideCompleted: false,
+
+      // Executed when hideCompleted changes or when the currently used cursor
+      // updates.
+      tasks: () => this.autovars.hideCompleted.get() ?
+        incompleteCursor.fetch() :
+        allCursor.fetch(),
+
+      // Executed when
+      incompleteCount: () => incompleteCursor.count()
+    }
+  },
+
+  ...
+
+  toggleHideCompleted() {
+    // Toggle the boolean, will cause all depending autovars to be reexecuted
+    const hideCompletedVar = this.autovars.hideCompleted;
+    hideCompletedVar.set(!hideCompletedVar.get());
+  },
+
+  ...
+
+  render() {
+    // Render will depend on incompleteCount, hideCompleted and tasks (through
+    // renderTasks). If any or all of those change, render will be executed
+    // exactly once.
+    const incompleteCount = this.autovars.incompleteCount.get();
+    const hideCompleted = this.autovars.hideCompleted.get();
+    return (
+      <div className="container">
+        <header>
+          <h1>Todo List ({incompleteCount})</h1>
+
+  ...
+```  
+
+See the examples directory for more examples.
