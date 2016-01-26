@@ -16,10 +16,10 @@ own logic and derived state, rerendering those components may be too costly.
 
 React was built with a nice shadow DOM to be able to quickly execute view
 changes. But that doesn't help when child components have their own set of
-calculation to run before they can render themselves. Those still have to run
+calculations to run before they can render themselves. Those still have to run
 before every render.
 
-On approach is to separate logic and view and keep the React components as dumb
+One approach is to separate logic and view and keep the React components as dumb
 as possible. This is the approach Flux takes.
 
 AutoVars goes in the other direction by making the components smarter so
@@ -27,7 +27,6 @@ renders become more fine grained and less frequent. It relies heavily on core
 Meteor reactivity.
 
 ### 2. Bugs due to multiple state mutation flows: data, props and state
-
 React has props to pass data between components and state to manage internal
 component state. The integration with Meteor adds `.data` and `getMeteorData`.
 Both `render` and `getMeteorData` become reactive and are executed when a
@@ -51,3 +50,4 @@ of the React component lifecycle with automatically executing functions, the
 results of which can be accessed through `.autovars`.
 
 ## Show me an example!
+See the examples directory for some examples.
