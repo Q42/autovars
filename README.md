@@ -110,3 +110,70 @@ App = React.createClass({
 ```  
 
 See the examples directory for more examples.
+
+## API
+When you add the `AutoVarMixin` to your React component, the following will be
+added to the component.
+
+### `this.constructAutoVars`
+This function is called once (during `componentWillMount`) and is the place
+where you can declare your Autovars. Autovars come in two flavors: primitive
+values that can be updated from other code and functions that are automatically
+rerun when the autovars (or other reactive dependencies) they use have changed.
+
+```javascript
+App = React.createClass({
+  mixins: [AutoVarMixin],
+
+  constructAutoVars() {
+    return {
+      count: 0,
+      oddOrEven: () => this.autovals.count % 2 === 0 ? 'even' : 'odd'
+    }
+  }
+```
+
+The functions declared in `constructAutoVars` are executed in order and can
+therefore use the output of preceding sibling vars.
+
+### `this.autovars`
+All Autovars declared in `constructAutoVars` are exposed through
+`this.autovars`. An Autovar is in fact a ReactiveVar and `this.autovars` gives
+you a handle to that ReactiveVar. This is particularly useful if you want to
+pass the var through React props, because with Autovars, only components
+actually reading from the ReactiveVar will be rerendered. With plain React, all
+components in the hierarchy passing on props are rerendered.
+
+Example:
+
+```javascript
+  click() {
+    this.autovars.count.set(this.autovars.count.get() + 1);
+  },
+
+  render() {
+    const count = this.autovars.count.get();
+    const oddOrEven = this.autovars.oddOrEven.get();
+    return (
+      <div>
+        <button onClick={this.click()}>Click Me</button>
+        <p>{count} clicks ({oddOrEven}).</p>
+      </div>)
+  }
+```
+
+### `this.autovals`
+`this.autovals` is a shorthand for `this.autovars` exposing the same vars, but
+now with getters and setters so your code becomes more concise.
+
+Example:
+
+```javascript
+  render() {
+    return (
+      <div>
+        <button onClick={_ => this.autovals.count++}>Click Me</button>
+        <p>{this.autovals.count} clicks ({this.autovals.oddOrEven}).</p>
+      </div>)
+  }
+```
