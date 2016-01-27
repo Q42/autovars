@@ -71,7 +71,7 @@ App = React.createClass({
 
       // Executed when hideCompleted changes or when the currently used cursor
       // updates.
-      tasks: () => this.autovars.hideCompleted.get() ?
+      tasks: () => this.autovals.hideCompleted ?
         incompleteCursor.fetch() :
         allCursor.fetch(),
 
@@ -84,8 +84,7 @@ App = React.createClass({
 
   toggleHideCompleted() {
     // Toggle the boolean, will cause all depending autovars to be reexecuted
-    const hideCompletedVar = this.autovars.hideCompleted;
-    hideCompletedVar.set(!hideCompletedVar.get());
+    this.autovals.hideCompleted = !this.autovals.hideCompleted;
   },
 
   ...
@@ -94,13 +93,19 @@ App = React.createClass({
     // Render will depend on incompleteCount, hideCompleted and tasks (through
     // renderTasks). If any or all of those change, render will be executed
     // exactly once.
-    const incompleteCount = this.autovars.incompleteCount.get();
-    const hideCompleted = this.autovars.hideCompleted.get();
     return (
       <div className="container">
         <header>
-          <h1>Todo List ({incompleteCount})</h1>
+          <h1>Todo List ({this.autovals.incompleteCount})</h1>
 
+          <label className="hide-completed">
+            <input
+              type="checkbox"
+              readOnly={true}
+              checked={this.autovals.hideCompleted}
+              onClick={this.toggleHideCompleted} />
+            Hide Completed Tasks
+          </label>
   ...
 ```  
 

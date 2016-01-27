@@ -7,17 +7,11 @@ Hello = React.createClass({
     }
   },
 
-  click() {
-    const counterVar = this.autovars.counter;
-    counterVar.set(counterVar.get() + 1);
-  },
-
   render() {
-    const counter = this.autovars.counter.get();
     return (
       <div>
-        <button onClick={this.click}>Click Me</button>
-        <p>You've pressed the button {counter} times.</p>
+        <button onClick={_ => this.autovals.counter++}>Click Me</button>
+        <p>You've pressed the button {this.autovals.counter} times.</p>
       </div>
     );
   }
