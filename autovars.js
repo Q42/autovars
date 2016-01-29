@@ -129,15 +129,6 @@ AutoVarMixin = {
           component.autovars[varName] = new ReactiveVar(initialValue);
         }
       });
-
-      // Expose all vars also under autovals with getters and setters
-      component.autovals = {};
-      _.each(component.autovars, function(autovar, name) {
-        Object.defineProperty(component.autovals, name, {
-          get: function() { return autovar.get(); },
-          set: function (val) { autovar.set(val); }
-         });
-      });
     }
   },
 

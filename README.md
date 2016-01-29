@@ -161,19 +161,3 @@ Example:
       </div>)
   }
 ```
-
-### `this.autovals`
-`this.autovals` is a shorthand for `this.autovars` exposing the same vars, but
-now with getters and setters so your code becomes more concise.
-
-Example:
-
-```javascript
-  render() {
-    return (
-      <div>
-        <button onClick={_ => this.autovals.count++}>Click Me</button>
-        <p>{this.autovals.count} clicks ({this.autovals.oddOrEven}).</p>
-      </div>)
-  }
-```
