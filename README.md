@@ -49,9 +49,6 @@ AutoVars solves this problem by replacing `.data` and `.state` as well as most
 of the React component lifecycle with automatically executing functions, the
 results of which can be accessed through `.autovars`.
 
-## Show me an example!
-See the examples directory for examples.
-
 ## API
 When you add the `AutoVarMixin` to your React component, the following will be
 added to the component.
@@ -69,7 +66,7 @@ App = React.createClass({
   constructAutoVars() {
     return {
       count: 0,
-      oddOrEven: () => this.autovals.count % 2 === 0 ? 'even' : 'odd'
+      oddOrEven: () => this.autovars.count.get() % 2 === 0 ? 'even' : 'odd'
     }
   }
 ```
@@ -102,3 +99,10 @@ Example:
       </div>)
   }
 ```
+
+## Show me an example!
+See the examples directory for examples:
+
+`examples/simple`: the autovars version of the default Meteor app
+`examples/simple-todos-autovars`: the autovars version of the simple-todos app
+`examples/full`: shows difference between passing props and using autovars
