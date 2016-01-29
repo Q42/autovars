@@ -8,13 +8,16 @@ AutoVarCol = React.createClass({
     }
   },
 
+  activate() {
+    this.props.activeColumn.set(this.props.colIdx);
+  },
+
   render() {
     const clazz = this.autovars.isActive.get() ? 'active' : 'inactive';
-    const text = this.props.colIdx + '-' + this.props.rowIdx;
-    console.log('renderCol', text);
+    console.log('column', this.props.colIdx);
     return (
-      <td className={clazz}>
-        { text }
+      <td className={clazz} onMouseOver={this.activate}>
+        <div class="box"></div>
       </td>
     );
   }

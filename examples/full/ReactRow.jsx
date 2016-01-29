@@ -1,12 +1,18 @@
 ReactRow = React.createClass({
+
+
   renderCols() {
     return _.range(COLS).map((idx) =>
-      <ReactCol key={idx} rowIdx={this.props.rowIdx} colIdx={idx} activeColumn={this.props.activeColumn}/>
+      <ReactCol
+        key={idx}
+        colIdx={idx}
+        activeColumn={this.props.activeColumn}
+        activate={this.props.activate}
+        />
     );
   },
 
   render() {
-    console.log('renderRow', this.props.rowIdx);
     return (
       <tr>
         { this.renderCols() }

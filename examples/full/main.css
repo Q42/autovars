@@ -1,11 +1,20 @@
 .active {
-  background-color: #007DAD;
+  background-color: #F00;
 }
 
 .inactive {
-  background-color: #000000;
+  background-color: #CCC;
 }
 
-div {
+.box {
+  width: 3px;
+  height: 3px;
+}
+
+.container {
   float:left;
+}
+
+table {
+  border-collapse: collapse
 }

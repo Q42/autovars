@@ -3,12 +3,16 @@ AutoVarRow = React.createClass({
 
   renderCols() {
     return _.range(COLS).map((idx) =>
-      <AutoVarCol key={idx} rowIdx={this.props.rowIdx} colIdx={idx} activeColumn={this.props.activeColumn}/>
+      <AutoVarCol
+        key={idx}
+        colIdx={idx}
+        activeColumn={this.props.activeColumn}
+        />
     );
   },
 
+
   render() {
-    console.log('renderRow', this.props.rowIdx);
     return (
       <tr>
         { this.renderCols() }

@@ -1,12 +1,24 @@
 ReactCol = React.createClass({
+
+
+
+
+
+
+
+
+
+  activate() {
+    this.props.activate(this.props.colIdx);
+  },
+
   render() {
     const isActive = this.props.activeColumn === this.props.colIdx;
     const clazz = isActive ? 'active' : 'inactive';
-    const text = this.props.colIdx + '-' + this.props.rowIdx;
-    console.log('renderCol', text);
+    console.log('column', this.props.colIdx);
     return (
-      <td className={clazz}>
-        { text }
+      <td className={clazz} onMouseOver={this.activate}>
+        <div class="box"></div>
       </td>
     );
   }

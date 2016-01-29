@@ -7,16 +7,16 @@ AutoVarTable = React.createClass({
     }
   },
 
-  moveColumn() {
-    const activeColumn = this.autovars.activeColumn.get();
-    this.autovars.activeColumn.set((activeColumn + 1) % COLS);
-  },
+
+
+
+
+
 
   render() {
     return (
-      <div>
+      <div class="container">
         <h1>AutoVarTable</h1>
-        <button onClick={this.moveColumn}>Next</button>
         <table>
           <tbody>
             { this.renderRows() }
@@ -28,7 +28,10 @@ AutoVarTable = React.createClass({
 
   renderRows() {
     return _.range(ROWS).map((idx) =>
-      <AutoVarRow key={idx} rowIdx={idx} activeColumn={this.autovars.activeColumn}/>
+      <AutoVarRow
+        key={idx}
+        activeColumn={this.autovars.activeColumn}
+        />
     );
   }
 });
