@@ -1,0 +1,11 @@
+.active {
+  background-color: #007DAD;
+}
+
+.inactive {
+  background-color: #000000;
+}
+
+div {
+  float:left;
+}
