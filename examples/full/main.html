@@ -21,5 +21,16 @@
     centrally managed state. Deriving that state costs CPU cycles. Therefore
     preventing rerenders in that case will improve user experience.
   </p>
+  <p>
+    Using something like Flux can make the ReactTable more performant, but since
+    it will not skip lambda calculations and rerenders like AutoVars, it will
+    still be slower. I welcome PRs with better implementations though!
+  </p>
+  <p>
+    See this demo in action at:
+    <a href="http://autovars-table.meteor.com">http://autovars-table.meteor.com</a><br/>
+    Github repo:
+    <a href="https://github.com/Q42/autovars">https://github.com/Q42/autovars</a><br/>
+  </p>
   <div id="render-target"></div>
 </body>

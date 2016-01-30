@@ -6,6 +6,10 @@ Meteor and React are both great frameworks but integrated you may run into
 the following issues when you build a complex, data heavy, highly interactive
 app.
 
+See the `examples/full` example deployed at
+<a href="http://autovars-table.meteor.com">http://autovars-table.meteor.com</a>
+to see the difference.
+
 ### 1. Performance issues due to rerendering of entire subtrees
 React is a great addition to Meteor for several reasons, one of them is it's
 components which allow you to encapsulate both view and logic. This is always
