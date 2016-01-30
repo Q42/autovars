@@ -1,6 +1,4 @@
 ReactTable = React.createClass({
-
-
   getInitialState() {
     return {
       activeColumn: 0
@@ -15,8 +13,8 @@ ReactTable = React.createClass({
 
   render() {
     return (
-      <div class="container">
-        <h1>ReactTable</h1>
+      <div className="container">
+        <h2>ReactTable</h2>
         <table>
           <tbody>
             { this.renderRows() }

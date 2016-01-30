@@ -1,5 +1,5 @@
-ROWS = 50;
-COLS = 50;
+ROWS = 42;
+COLS = 42;
 
 App = React.createClass({
   render() {

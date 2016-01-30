@@ -11,7 +11,6 @@ AutoVarRow = React.createClass({
     );
   },
 
-
   render() {
     return (
       <tr>

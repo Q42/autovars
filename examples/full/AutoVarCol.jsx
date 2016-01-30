@@ -1,7 +1,6 @@
 AutoVarCol = React.createClass({
   mixins: [AutoVarMixin],
 
-  // Here goes all logic previously in getMeteorData and getInitialState
   constructAutoVars() {
     return {
       isActive: () => this.props.activeColumn.get() === this.props.colIdx
@@ -13,11 +12,12 @@ AutoVarCol = React.createClass({
   },
 
   render() {
+    // This console.log artifically slows down .render to simulate complex logic
+    console.log('render column', this.props.colIdx);
+
     const clazz = this.autovars.isActive.get() ? 'active' : 'inactive';
-    console.log('column', this.props.colIdx);
     return (
-      <td className={clazz} onMouseOver={this.activate}>
-        <div class="box"></div>
+      <td className={clazz} onMouseMove={this.activate}>
       </td>
     );
   }

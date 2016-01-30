@@ -1,3 +1,8 @@
+.container {
+  float: left;
+  margin: 20px;
+}
+
 .active {
   background-color: #F00;
 }
@@ -6,13 +11,9 @@
   background-color: #CCC;
 }
 
-.box {
+td {
   width: 3px;
   height: 3px;
-}
-
-.container {
-  float:left;
 }
 
 table {

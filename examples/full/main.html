@@ -1,3 +1,25 @@
 <body>
+  <h1>Demonstrates AutoVars sparse rendering</h1>
+  <p>
+    Move your mouse cursor over either table to move the red column. It should
+    stay close to your cursor. If both tables respond fluently on yur hardware,
+    try increasing the table size in App.jsx. Conversely, if both are too slow,
+    try a smaller table size.
+  </p>
+  <p>
+    <b>The effect is even clearer when you open the developer console.</b>
+  </p>
+  <p>
+    This example simulates a complex webapp with leaf components that apply
+    logic on state that centrally managed. We developed this for a car
+    configurator (https://configurator.mazda.nl) where many things change based
+    on a single click.
+  </p>
+  <p>
+    React is built to quickly rerender subtrees, but in our case that approach
+    isn't sufficient because many components derive their state from the
+    centrally managed state. Deriving that state costs CPU cycles. Therefore
+    preventing rerenders in that case will improve user experience.
+  </p>
   <div id="render-target"></div>
 </body>

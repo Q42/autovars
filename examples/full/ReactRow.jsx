@@ -1,6 +1,4 @@
 ReactRow = React.createClass({
-
-
   renderCols() {
     return _.range(COLS).map((idx) =>
       <ReactCol

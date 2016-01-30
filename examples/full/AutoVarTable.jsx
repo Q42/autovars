@@ -7,16 +7,10 @@ AutoVarTable = React.createClass({
     }
   },
 
-
-
-
-
-
-
   render() {
     return (
-      <div class="container">
-        <h1>AutoVarTable</h1>
+      <div className="container">
+        <h2>AutoVarTable</h2>
         <table>
           <tbody>
             { this.renderRows() }
