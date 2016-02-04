@@ -12,8 +12,10 @@ AutoVarCol = React.createClass({
   },
 
   render() {
-    // This console.log artifically slows down .render to simulate complex logic
-    console.log('render column', this.props.colIdx);
+    // Artifically slow down .render to simulate complex logic
+    const t0 = Date.now();
+    while (Date.now() <= t0)
+      ;
 
     const clazz = this.autovars.isActive.get() ? 'active' : 'inactive';
     return (
