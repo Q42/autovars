@@ -22,7 +22,7 @@ App = React.createClass({
         incompleteCursor.fetch() :
         allCursor.fetch(),
 
-      // Executed when
+      // Executed when incompleteCursor changes
       incompleteCount: () => incompleteCursor.count()
     }
   },
